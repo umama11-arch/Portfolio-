@@ -345,6 +345,11 @@
         border-radius: 50%;
         border: 5px solid var(--teal-blue);
     }
+    .contactmain img{
+        width: 50px; 
+        height: 50px;
+         border:1px solid var(--gold);
+    }
 
 
     @media screen and (max-width:892px){
@@ -453,10 +458,12 @@
             <section class="contactmain">
                 <h2 style="color: var(--gold);">Let's turn your vision into code </h2>
                 <p>Wheter you have a website idea or need a creative UI. <strong style="color: var(--gold);">Lets connect</strong></p>
-                <a href="https://Instagram.com" target="_blank">
-                    <img style="width: 20px; height: 20px; border:1px solid var(--gold);" src="insta.jpg" alt="Facebook">
+                <a href="https://Facebook.com" target="_blank">
+                    <img src="facebook.png" alt="Facebook">
                 </a>
-                <a href="">Instagram</a>
+                <a href="" target="_blank">
+                    <img src="instagram.jpg" alt="instagram">
+                </a>
             <a href="">Umamaishaq112gmail</a>
             </section>
             <section class="buttons">
@@ -471,9 +478,13 @@
 
 
 
-    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/scripts-plugin@3"></script>
     <script>
-          const swup = new Swup();
+          const swup = new Swup(
+            {
+                plugins :new [SwupScriptsPlugin()]
+            }
+          );
 
         let layers = document.querySelectorAll(".layer")
         let current = 0

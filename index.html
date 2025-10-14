@@ -84,9 +84,13 @@
         <button><a href="file.html">View Details</a></button>
     </main>
 
-    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/scripts-plugin@3"></script>
     <script>
-        const swup = new Swup() ;
+        const swup = new Swup(
+             {
+                plugins :new [SwupScriptsPlugin()]
+            }
+        ) ;
     </script>
 </body>
 </html>
