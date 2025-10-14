@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://font-size"> -->
+     <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+</head>
+<script src="pallete.css"></script>
+<style>
+    :root {
+        --deep-black: #0a0a0a;
+        --gold: #FFD700;
+        --teal-blue: #00BFA6;
+        --soft-white: #f5f5f5;
+    }
+
+    body {
+        font-family: 'Poppins','Lora',sans-serif;
+        overflow-x: hidden;
+        background-color: var(--deep-black);
+        color: var(--soft-white);
+        width: 98%;
+        overflow-x: hidden;
+    }
+
+    html.is-changing main {
+        opacity: 0;
+        transform: rotateY(-20deg) translateZ(-80px) translateX(-100px);
+        /* transition: all 0.5 ease; */
+        /* transform: scale(0.95); */
+        /* transform: translatex(-100%); */
+            transition: all 0.8s ease; 
+    }
+
+    /* html.is-leaving .folder{
+            opacity: 0;
+            transform: scale(0.9);
+        } */
+    html.is-rendering main {
+        opacity: 1;
+        /* transform: scale(1); */
+        transform: rotateY(0) translateZ(0) translateX(0);
+        /* transition: all 0.3s ease; */
+        /* transform: translateX(0%); */
+            transition: all 0.8s ease; 
+    }
+
+    html.is-leaving main {
+  opacity: 0;
+  transform: rotateY(20deg) translateZ(-100px) translateX(100px);
+  transition: all 0.8s ease;
+}
+
+
+    .folder {
+        position: relative;
+        height: 100vh;
+        perspective: 1000px;
+    }
+
+    .layer {
+        font-size: 20px;
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        left: 0;
+        border-radius: 25px;
+        height: 95%;
+        width: 100%;
+        border: 2px solid var(--teal-blue);
+        transform: translateX(40%);
+        /* transform: translateY(100%) rotateX(45deg); */
+        transition: all 1s cubic-bezier(0.65, 0 ,0.35 ,1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .layer.active {
+        opacity: 1;
+        z-index: 10;
+        transform: translateX(0) rotateX(0);
+    }
+
+    .layer :not(.active) {
+        z-index: 1;
+        /* transform: translateX(20%); */
+    }
+
+    .layer.qualification h1 {
+
+        color: var(--gold);
+    }
+
+    .layer.qualification {
+        color: var(--soft-white);
+        background-color: #141414;
+    }
+
+    
+    .projectsmain {
+        height: 200px;
+    }
+
+    .layer.qualification button {
+        color: var(--soft-white);
+        background-color: var(--gold);
+
+    }
+    
+    .layer.qualification button:hover {
+        background-color: var(--teal-blue);
+        box-shadow: 0 0 15px var(--teal-blue);
+    }
+    
+    .layer.certification {
+        /* background: -1px; */
+        background-color: #1a1a1a;
+        color: var(--soft-white);
+    }
+
+    .layer.certification h1 {
+        color: var(--teal-blue);
+    }
+    
+    .layer.certification button {
+        background-color: var(--teal-blue);
+    }
+    
+    .layer.certification button:hover {
+        background-color: var(--gold);
+        box-shadow: 0 0 15px var(--gold);
+    }
+
+    .certificationmain {
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 5px;
+    }
+
+    .certificationmain p {
+        text-align: center;
+    }
+    
+    .skills {
+        display: flex;
+        gap: 3%;
+        /* gap: 150px; */
+        /* padding-bottom: 30px; */
+        /* background-color: var(--teal-blue); */
+    }
+    .certificationmain h2{
+        padding-top: 30px;
+    }
+    
+    .coretools,
+    .styling,
+    .creative {
+        /* background-color: var(--teal-blue); */
+        /* color: var(--gold); */
+        border-radius: 25px;
+        /* text-align: center; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid var(--gold);
+        width: 260px;
+        /* padding-left: 10px; */
+    }
+    
+    .layer.projects {
+        padding-top: 10px;
+        /* padding-bottom: 10px; */
+        color: var(--soft-white);
+        background-color: #101010;
+    }
+
+    .projectstmain{
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    /* .layer.projects h1 {
+        background: linear-gradient(90deg, var(--gold), var(--teal-blue));
+        color: transparent;
+        -webkit-background-clip: text;
+    } */
+    .layer.projects a {
+        color: var(--deep-black);
+        text-decoration: none;
+        text-align: center;
+        padding-top: 15px;
+    }
+
+    .layer.projects a:hover {
+        color: var(--soft-white);
+    }
+
+    .layer.projects button {
+        background-color:var(--gold);
+        border: 2px solid var(--gold);
+        color: var(--deep-black);
+    }
+
+    .layer.projects button:hover {
+        background-color: var(--teal-blue);
+        border-color: var(--teal-blue);
+        color: var(--soft-white);
+        box-shadow: 0 0 15px var(--teal-blue);
+    }
+
+    .layer.contact {
+        color: var(--soft-white);
+        background-color: #0d0d0d;
+        /* transform: translateX(50%); */
+    }
+
+    .layer.contact h1 {
+        font-family: 'Lora','Poppins',sans-serif;
+        color: var(--soft-white);
+        text-shadow: -10px 12px 19px #FFD700;
+    }
+
+    .layer.contact button {
+        background-color: var(--teal-blue);
+        color: var(--soft-white);
+
+    }
+
+    .layer.contact button:hover {
+        background-color: var(--gold);
+        box-shadow: 0 0 15px var(--gold);
+        color: var(--deep-black);
+    }
+
+    .layer.contact a {
+        color: var(--gold);
+        text-decoration: none;
+    }
+
+    .layer.contact a:hover {
+        color: var(--teal-blue);
+    }
+
+    .contactmain {
+        height: 300px;
+        font-size: 25px;
+    }
+    .contactmain h2{
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+    }
+
+    button {
+        padding: 17px;
+        font-size: 17px;
+        width: 140px;
+        color: var(--soft-white);
+        border-radius: 35px;
+        cursor: pointer;
+        /* background-color: var(--deep-black); */
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        transition: all 0.5s ease;
+    }
+    .viewproject{
+        border: 2px solid var(--gold);
+        background-color: var(--gold);
+        padding: 9px;
+        width: 115px;
+        font-size: 18px;
+        border-radius: 35px;
+        text-align: center;
+    }
+    .viewproject:hover{
+        background-color: var(--teal-blue);
+        border-color: var(--teal-blue);
+        box-shadow: 0 0 15px var(--teal-blue);
+    } 
+
+    .hireme ,.closefolder{
+        background-color: var(--teal-blue);
+        /* color: var(--soft-white); */
+        /* border: 2px solid var(--sof); */
+        padding: 9px;
+        width: 115px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* font-weight: lighter; */
+        /* text-align: center; */
+        border-radius: 35px;
+    }
+
+    .hireme:hover ,.closefolder:hover{
+        box-shadow: 0 0 15px var(--gold);
+        background-color: var(--gold);
+        color: var(--deep-black);
+        /* color: var(--deep-black); */
+ }
+    .buttons {
+        display: flex;
+        gap: 10px;
+    }
+    a:hover{
+        transform: scale(1.05);
+        transition: all 0.5s ease;
+    }
+
+    h2 {
+        color: var(--gold);
+        font-size: 2rem;
+        text-align: center;
+        /* font-weight: 600; */
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        font-family: 'Lora','Poppins',sans-serif;
+    }
+
+    h3 {
+        font-family: 'Lora','Poppins',sans-serif;
+        color: var(--gold);
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0px;
+    }
+    img{
+        width: 300px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid var(--teal-blue);
+    }
+</style>
+
+<body>
+    <main class="folder transition-main" id="swup">
+
+
+        <section class="layer certification active">
+            <!-- <h1>Skills : </h1> -->
+            <section class="certificationmain">
+                <h2>I dont just build pages. I build experiences users remember. </h2>
+                <p>I craft responsive, visually engaging websites using HTML,CSS and JS ,not just to look beautiful ,
+                    but to make every click feel right.My focus is clean code,smooth animations, and experiences that
+                    turns visitor into loyal clients.</p>
+                <section class="skills">
+                    <section class="coretools">
+                        <h3>Core tools</h3>
+                        <ul>
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JS(ES6)</li>
+                        </ul>
+                    </section>
+                    <section class="styling">
+                        <h3>Styling </h3>
+                        <ul>
+                            <li>Animations</li>
+                            <li>CSS Grid</li>
+                            <li>Flexbox</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </section>
+                    <section class="creative">
+                        <h3>Creative design</h3>
+                        <ul>
+                            <li>Figma</li>
+                            <li>Color Theory</li>
+                            <li>Typography</li>
+                        </ul>
+                    </section>
+                </section>
+            </section>
+            <button class="button" id="btn2id" onclick="nextlayer(1)">Projects</button>
+        </section>
+
+
+
+        <section class="layer projects">
+            <img src="buisness2.png" alt="Profile">
+            <section class="projectstmain">
+                <h3 style="color: var(--teal-blue);">A Resturaunt Website</h3>
+                <p>Created a resturaunt website with HTML,CSS,JAVASCRIPT.Focused on smooth animations and responsive
+                    layouts.</p>
+                <p><strong style="color: var(--teal-blue);">Tech : </strong> HTML | CSS |JS</p>
+            </section>
+            <section class="buttons">
+
+                <a  class="viewproject" href="">View Project</a>
+                <button class="button" id="btn3id" onclick="nextlayer(2)">Contact Me</button>
+            </section>
+        </section>
+
+
+
+
+
+        <!-- <section class="layer qualification">
+            <h1>qualifications</h1>
+            <button class="button" id="btnid" onclick="nextlayer(3)">Next</button>
+        </section> -->
+
+
+        <section class="layer contact">
+            <!-- <h1 style="font-weight: bolder;">Contact</h1> -->
+            <section class="contactmain">
+                <h2 style="color: var(--gold);">Let's turn your vision into code </h2>
+                <p>Wheter you have a website idea or need a creative UI. <strong style="color: var(--gold);">Lets connect</strong></p>
+                <a href="https://facebook.com" target="_blank">
+                    <img style="width: 20px; height: 20px; border:1px solid var(--gold);" src="umamam.png" alt="Facebook">
+                </a>
+                <a href="">Instagram</a>
+            <a href="">Umamaishaq112gmail</a>
+            </section>
+            <section class="buttons">
+
+                <a style="color: var(--soft-white); " class="hireme" href="www.google.com">Hire me </a>
+                <button class="button" id="btn4id" onclick="nextlayer(0)">Back to top</button>
+                <!-- <button>Close folder</button> -->
+                 <a style="color: var(--soft-white);" class="closefolder" href="port.html" data-swup-preload ="" >Close Folder</a>
+            </section>
+        </section>
+    </main>
+
+
+
+    <script src="https://unpkg.com/swup@4"></script>
+    <script>
+          const swup = new Swup();
+
+        let layers = document.querySelectorAll(".layer")
+        let current = 0
+        function nextlayer(index) {
+            layers[current].classList.remove('active')
+            // alert("hrllo")
+            current = index
+            layers[current].classList.add('active')
+        }
+    </script>
+</body>
+
+</html>
