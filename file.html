@@ -482,10 +482,8 @@
 
     <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
     <script>
-          const swup = new Swup(
-            {
-                plugins :new [SwupScriptsPlugin()]
-            }
+          const swup = new Swup({
+                plugins :[new SwupScriptsPlugin()]}
           );
 
         let layers = document.querySelectorAll(".layer")
