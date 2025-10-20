@@ -12,6 +12,7 @@
             --soft-white:#f5f5f5;
         }
         body{
+            transition:all 1s ease ;
             margin: 0px;
             background-color: var(--deep-black);
             color: var(--soft-white);
@@ -32,7 +33,7 @@
             color: var(--gold);
         }
         button{
-            background-color: var(--gold);
+            background-color: var(--teal-blue);
             padding: 15px;
             border-radius: 35px;
             color: var(--soft-white);
@@ -41,14 +42,15 @@
             /* color: var(--teal-blue); */
         }
         button:hover{
-            background-color: var(--teal-blue);
+            color: var(--soft-white);
+            background-color: var(--gold);
         }
         a{
             text-decoration: none;
-            color: var(--deep-black);
+            color: var(--gold);
         }
         a:hover{
-            color: var(--gold);
+            color: var(--soft-white);
         }
         img{
             border: 5px solid var(--gold);
@@ -57,38 +59,32 @@
             border-radius: 50%;
         }
 
-        html.is-changing main{
+        body.closing{
+            transform: rotateY(180deg);
             opacity: 0;
-            /* transform: scale(0.95); */
-            /* transform: translatex(-100%); */
-            transform: rotateY(-20deg) translateZ(-80px) translateX(-100px);
-            /* transition: all 0.5 ease; */
         }
-        /* html.is-leaving .folder{
-            opacity: 0;
-            transform: scale(0.9);
-        } */
-        html.is-rendering main{
-            opacity: 1;
-            transform: rotateY(0) translateZ(0) translateX(0);
-            /* transition: all 0.3s ease; */
-            /* transform: scale(1); */
-            /* transform: translateX(0%); */
-        }
+
+       
         </style>
 </head>
 <body >
     <main class="folder transition-main" id="swup">
         <img src="umamam.png" alt="LOGO">
         <h1>Portfolio</h1>
-        <button><a href="file.html">View Details</a></button>
+        <button id="cta"><a href="file.html">View Details</a></button>
     </main>
 
-    <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
+    <!-- <script src="https://unpkg.com/@swup/scripts-plugin@2"></script> -->
     <script>
-        const swup = new Swup({
-                plugins :[new SwupScriptsPlugin()]}
-        ) ;
+        let btn=document.getElementById("cta")
+        btn.addEventListener("click",(e)=>{
+            e.preventDefault();
+            document.body.classList.add("closing")
+
+            setTimeout(() => {
+                window.location=e.target.href;
+            }, 1000);
+        })
     </script>
 </body>
 </html>

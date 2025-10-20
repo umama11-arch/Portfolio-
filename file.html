@@ -26,36 +26,10 @@
         color: var(--soft-white);
         width: 98%;
         overflow-x: hidden;
+        transition: all 1s ease;
     }
 
-    html.is-changing main {
-        opacity: 0;
-        transform: rotateY(-20deg) translateZ(-80px) translateX(-100px);
-        /* transition: all 0.5 ease; */
-        /* transform: scale(0.95); */
-        /* transform: translatex(-100%); */
-            transition: all 0.8s ease; 
-    }
-
-    /* html.is-leaving .folder{
-            opacity: 0;
-            transform: scale(0.9);
-        } */
-    html.is-rendering main {
-        opacity: 1;
-        /* transform: scale(1); */
-        transform: rotateY(0) translateZ(0) translateX(0);
-        /* transition: all 0.3s ease; */
-        /* transform: translateX(0%); */
-            transition: all 0.8s ease; 
-    }
-
-    html.is-leaving main {
-  opacity: 0;
-  transform: rotateY(20deg) translateZ(-100px) translateX(100px);
-  transition: all 0.8s ease;
-}
-
+   
 
     .folder {
         position: relative;
@@ -214,7 +188,10 @@
         border: 2px solid var(--gold);
         color: var(--deep-black);
     }
-
+    .contactmain .buttons2{
+        display: flex;
+        gap: 30%;
+    }
     .layer.projects button:hover {
         background-color: var(--teal-blue);
         border-color: var(--teal-blue);
@@ -350,6 +327,10 @@
         height: 50px;
          border:1px solid var(--gold);
     }
+    body.closing{
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
 
 
     @media screen and (max-width:892px){
@@ -458,33 +439,37 @@
             <section class="contactmain">
                 <h2 style="color: var(--gold);">Let's turn your vision into code </h2>
                 <p>Wheter you have a website idea or need a creative UI. <strong style="color: var(--gold);">Lets connect</strong></p>
-                <a href="https://Facebook.com" target="_blank">
-                    <img src="facebook.png" alt="Facebook">
-                </a>
-                <a href="" target="_blank">
-                    <img src="instagram.jpg" alt="instagram">
-                </a>
-            <a href="umamaishaq@gmail.com" target="_blank">
-                <img src="gmail.png" alt="gmail">
-            </a>
+               <section class="buttons2">
+
+                   <a href="https://Facebook.com" target="_blank">
+                       <img src="facebook.png" alt="Facebook">
+                    </a>
+                    <a href="" target="_blank">
+                        <img src="instagram.jpg" alt="instagram">
+                    </a>
+                    <a href="umamaishaq@gmail.com" target="_blank">
+                        <img src="gmail.png" alt="gmail">
+                    </a>
+                </section>
             </section>
             <section class="buttons">
 
                 <a style="color: var(--soft-white); " class="hireme" href="www.google.com">Hire me </a>
                 <button class="button" id="btn4id" onclick="nextlayer(0)">Back to top</button>
                 <!-- <button>Close folder</button> -->
-                 <a style="color: var(--soft-white);" class="closefolder" href="index.html" data-swup-preload ="" >Close Folder</a>
-            </section>
+                 <a style="color: var(--soft-white);" class="closefolder" id="closefolderid" href="index.html"  >Close Folder</a>
+           
+                </section>
         </section>
     </main>
 
 
 
-    <script src="https://unpkg.com/@swup/scripts-plugin@2"></script>
+    <!-- <script src="https://unpkg.com/@swup/scripts-plugin@2"></script> -->
     <script>
-          const swup = new Swup({
-                plugins :[new SwupScriptsPlugin()]}
-          );
+        //   const swup = new Swup({
+                // plugins :[new SwupScriptsPlugin()]}
+        //   );
 
         let layers = document.querySelectorAll(".layer")
         let current = 0
@@ -494,6 +479,16 @@
             current = index
             layers[current].classList.add('active')
         }
+
+        let btn =document.getElementById("closefolderid")
+        btn.addEventListener("click",(e)=>{
+            e.preventDefault()
+            document.body.classList.add("closing")
+        
+
+        setTimeout(() => {
+            window.location=e.target.href
+        }, 1000);})
     </script>
 </body>
 
